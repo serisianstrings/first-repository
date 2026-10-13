@@ -43,8 +43,12 @@ sources:
   jobs_api:
     provider: jsearch             # fallback: serpapi
     api_key_env: JSEARCH_API_KEY  # set in environment secrets, never committed
+    max_requests_per_run: 8       # 8 x ~22 weekdays = ~176/month, under the 200/month free tier
 
 digest:
   jobs_per_day: 3
   schedule: 'weekdays 06:45 America/Los_Angeles'
   notify: push
+
+resume:
+  google_drive_file_id: 1zuYlQ9vb0XRD8NOpxVzLh8eySRE7aiiRp2_cPDtKZo4   # "Scott Beckman Resume - Master" (private to owner)

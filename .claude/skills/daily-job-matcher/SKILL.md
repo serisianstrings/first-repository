@@ -48,7 +48,7 @@ Add the shown jobs to `seen_jobs.json` (`<source>:<source_id>` and the job key).
 
 ## 4. Tailor the resume (on request)
 
-Load the master resume from the user's Google Drive (or the uploaded PDF). Rewrite the
+Load the master resume with the Google Drive connector (`read_file_content` on `profile.yaml` → `resume.google_drive_file_id`). Rewrite the
 headline, summary, competency order and bullet order/wording to mirror the posting's
 language and priorities. **Never invent** employers, titles, dates, metrics or skills.
 Produce a Claude Doc of the tailored resume plus a "what changed and why" list.
