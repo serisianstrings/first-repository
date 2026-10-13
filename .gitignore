@@ -1,3 +1,5 @@
 resume/
 .claude/skills/daily-job-matcher/resume/
 *.pdf
+__pycache__/
+*.pyc

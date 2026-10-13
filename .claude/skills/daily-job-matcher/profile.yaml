@@ -15,10 +15,10 @@ target_titles:
 
 min_base_salary: 250000          # base only; bonus/equity/OTE excluded
 min_range_midpoint: 225000       # guards against wide bait ranges
-max_posted_age_hours: 24         # widened to 72 when fewer than 3 qualify
+max_posted_age_hours: 72
 
 locations:
-  preferred: [Los Angeles, CA, Las Vegas, NV, Denver, CO]
+  preferred: ["Los Angeles, CA", "Las Vegas, NV", "Denver, CO"]
   remote_us: true
   open_to_relocation_us: true
 
@@ -37,9 +37,9 @@ deal_breakers: []                 # add items like "on-site 5 days outside prefe
 
 sources:
   gmail_alerts:                   # existing saved-search alerts
-    linkedin: 'from:jobalerts-noreply@linkedin.com newer_than:2d'
-    indeed: 'from:alert@indeed.com newer_than:2d'
-    working_nomads: 'from:workingnomads newer_than:2d'
+    linkedin: 'from:jobalerts-noreply@linkedin.com newer_than:3d'
+    indeed: 'from:(match.indeed.com OR alert@indeed.com) newer_than:3d'
+    working_nomads: 'from:hello@workingnomads.com subject:"Daily Job Alert" newer_than:3d'
   jobs_api:
     provider: jsearch             # fallback: serpapi
     api_key_env: JSEARCH_API_KEY  # set in environment secrets, never committed

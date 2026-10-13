@@ -33,9 +33,9 @@ is an adapter that outputs the same `Job` record:
 
 | # | Source | How | Notes |
 |---|---|---|---|
-| A1 | **LinkedIn job alert emails** | Read alerts from Gmail (`from:jobalerts-noreply@linkedin.com newer_than:2d`), parse job ID, title, company, location and link. | My existing saved searches. Primary source. |
-| A2 | **Indeed job alert emails** | Read alerts from Gmail (`from:alert@indeed.com newer_than:2d`), parse title, company, location, salary snippet and link. | Indeed alert emails often include the salary line. |
-| A3 | **Working Nomads alert emails** | Read alerts from Gmail (`from:workingnomads newer_than:2d`), parse the listings. | Remote-only board; fits the remote-OK preference. |
+| A1 | **LinkedIn job alert emails** | Read alerts from Gmail (`from:jobalerts-noreply@linkedin.com`), parse job ID, title, company, location and link. | My existing saved searches. Primary source. |
+| A2 | **Indeed job alert emails** | Read job-match emails from Gmail (`from:match.indeed.com`), one job per email, parse title, company, location, `Salary:` line and link. | Your Indeed profile's "minimum base pay" is set to $120k, so most of these fall below the bar; raise it to $250k. |
+| A3 | **Working Nomads alert emails** | Read the daily digest from Gmail (`from:hello@workingnomads.com`), about 10–40 jobs per email, most with salary. | Remote-only board; fits the remote-OK preference. |
 | B | **Paid jobs API** | JSearch (RapidAPI) as the default, which aggregates LinkedIn, Indeed, Glassdoor and others. Queries per title × location, `date_posted=today/3days`. SerpApi Google Jobs is the backup. | Catches roles my alerts miss and fills thin days. |
 | C | **Public job-detail pages / feeds** | For candidates missing a description or salary: fetch the public (logged-out) job page, about 30/day, rate-limited. Working Nomads also has a public JSON feed (`/api/exposed_jobs/`) to try as a supplement. | Needs those domains allowed on the environment's network; not yet verified from this sandbox. |
 
@@ -132,7 +132,7 @@ the skill reads it at run time. `resume/` is gitignored for local copies.
 | Phase | Scope | Done when |
 |---|---|---|
 | **0. Setup** (me) | Connect **Gmail** at claude.ai/customize/connectors; put the resume in Drive; get a JSearch key and add it to environment secrets; allow job-site domains on the environment's network. | Connectors and key visible to a new session |
-| **1. Ingest** | Gmail parsers for all three alert types, JSearch adapter, normalize/dedupe, salary parser + tests. | 1 day of real alerts → clean Job list |
+| **1. Ingest** | ✅ Gmail parsers for all three alert types, salary/location parsing, filters, dedupe, tests. ⬜ JSearch adapter. | 1 day of real alerts → clean Job list |
 | **2. Match** | Filters, Claude fit scoring, ranking. | Manual run gives 3 sensible picks |
 | **3. Digest + push** | Artifact page, Routine with push notification. | Phone gets a notification linking to 3 jobs |
 | **4. Tailor** | Button → tailored resume Doc + change list. | One click → resume link on the card |
