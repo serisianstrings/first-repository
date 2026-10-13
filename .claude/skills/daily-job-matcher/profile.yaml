@@ -1,0 +1,50 @@
+# Preferences for the daily job matcher. No personal contact info here: this repo is public.
+
+target_titles:
+  - VP of Marketing
+  - VP, Growth Marketing
+  - VP, Performance Marketing
+  - VP, Demand Generation
+  - Head of Marketing
+  - Head of Growth
+  - Senior Director of Marketing
+  - Director of Marketing
+  - Director of Growth Marketing
+  - Director of Performance Marketing
+  - Director of Paid Media / Acquisition
+
+min_base_salary: 250000          # base only; bonus/equity/OTE excluded
+min_range_midpoint: 225000       # guards against wide bait ranges
+max_posted_age_hours: 24         # widened to 72 when fewer than 3 qualify
+
+locations:
+  preferred: [Los Angeles, CA, Las Vegas, NV, Denver, CO]
+  remote_us: true
+  open_to_relocation_us: true
+
+strengths:                        # from resume; used to steer fit scoring
+  - performance creative strategy and testing
+  - paid social and programmatic at $10M+/month
+  - marketing P&L ownership ($25M+ budgets)
+  - SaaS acquisition, retention and ARPU growth
+  - demand generation and pipeline
+  - CAC, LTV:CAC and revenue-margin optimization
+  - ad trafficking and MarTech automation
+  - team leadership across creative, paid media, SEO and analytics
+industries: [fintech, mortgage/lending, SaaS, telecom, consumer subscription, mobile apps]
+
+deal_breakers: []                 # add items like "on-site 5 days outside preferred cities"
+
+sources:
+  gmail_alerts:                   # existing saved-search alerts
+    linkedin: 'from:jobalerts-noreply@linkedin.com newer_than:2d'
+    indeed: 'from:alert@indeed.com newer_than:2d'
+    working_nomads: 'from:workingnomads newer_than:2d'
+  jobs_api:
+    provider: jsearch             # fallback: serpapi
+    api_key_env: JSEARCH_API_KEY  # set in environment secrets, never committed
+
+digest:
+  jobs_per_day: 3
+  schedule: 'weekdays 06:45 America/Los_Angeles'
+  notify: push
