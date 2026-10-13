@@ -44,7 +44,9 @@ Final score = 0.70 × fit + 0.15 × comp confidence (posted = 100, estimated ≥
 Pick the top 3, with at most one `base unverified`, and include an LA/LV/Denver role when
 one has fit ≥ 75. If fewer than 3 qualify, show fewer and say why. Never pad.
 
-Add the shown jobs to `seen_jobs.json` (`<source>:<source_id>` and the job key).
+Seen jobs live in Google Drive (`profile.yaml` → `state.seen_jobs_drive_file_id`), not the repo. Download it to the scratch
+dir before step 2 and pass it as `--seen`. Afterwards, add each shown job's `<source>:<source_id>` and job key and
+write the file back with the Drive connector's `update_file`.
 
 ## 4. Tailor the resume (on request)
 
